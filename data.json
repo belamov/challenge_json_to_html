@@ -1,0 +1,68 @@
+{
+    "type": "container",
+    "payload": {},
+    "children": [
+        {
+            "type": "image",
+            "payload": {
+                "link": null,
+                "image": {
+                    "id": 1,
+                    "meta": {
+                        "format": "PNG",
+                        "width": 1200,
+                        "height": 400,
+                        "filesize": 9130
+                    },
+                    "image": "https://andrey-company.ru/test/backend/sample_original.png"
+                }
+            },
+            "settings": {
+                "zoom": false
+            }
+        },
+        {
+            "type": "text",
+            "payload": {
+                "text": "Sample Text"
+            },
+            "settings": {
+                "fontSize": "medium",
+                "textAlign": "center"
+            }
+        },
+        {
+            "type": "block",
+            "payload": {},
+            "children": [
+                {
+                    "type": "container",
+                    "payload": {},
+                    "children": [
+                        {
+                            "type": "button",
+                            "payload": {
+                                "link": {
+                                    "type": "url",
+                                    "payload": "https://andrey-company.ru/"
+                                },
+                                "text": "Sample Button"
+                            },
+                            "settings": {
+                                "size": "medium",
+                                "style": "custom",
+                                "textColor": "#FFFFFF",
+                                "backgroundColor": "#FF0000"
+                            }
+                        }
+                    ],
+                    "settings": {}
+                }
+            ],
+            "settings": {
+                "textAlign": "center"
+            }
+        }
+    ],
+    "settings": {}
+}
