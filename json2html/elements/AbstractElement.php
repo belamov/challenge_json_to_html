@@ -26,10 +26,12 @@ abstract class AbstractElement
             "backgroundColor" => "background-color",
         ];
         foreach ($settings as $key => $value) {
-            if (key_exists($key, $settingsToStyles)) {
-                $this->styles .= "{$settingsToStyles[$key]}:{$value};";
-            } else {
-                $this->styles .= "{$key}:{$value};";
+            if (!in_array($key, ['style'])) {
+                if (key_exists($key, $settingsToStyles)) {
+                    $this->styles .= "{$settingsToStyles[$key]}:{$value};";
+                } else {
+                    $this->styles .= "{$key}:{$value};";
+                }
             }
         }
     }

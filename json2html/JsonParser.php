@@ -7,26 +7,18 @@ use json2html\elements\ElementsFactory;
 
 class JsonParser
 {
-    public function collectElementsFromJson($json)
+    public function collectElementsFromDecodedJson($decodedJson)
     {
-        //this is needed for recursion
-        if (is_string($json)) {
-            $array = [json_decode($json)];
-        } else {
-            $array = $json;
+        if (!is_array($decodedJson)) {
+            $decodedJson = [$decodedJson];
         }
-
         $elements = [];
-        foreach ($array as $item) {
-            try {
-                $element = ElementsFactory::build($item->type, $item->payload, $item->settings);
-                if (isset($item->children)) {
-                    $element->addChildren($this->collectElementsFromJson($item->children));
-                }
-                $elements[] = $element;
-            } catch (\Exception $exception) {
-                echo "Whoops! " . $exception->getMessage();
+        foreach ($decodedJson as $item) {
+            $element = ElementsFactory::build($item->type, $item->payload, $item->settings);
+            if (isset($item->children)) {
+                $element->addChildren($this->collectElementsFromDecodedJson($item->children));
             }
+            $elements[] = $element;
         }
         return $elements;
     }
