@@ -9,12 +9,12 @@
                 "image": {
                     "id": 1,
                     "meta": {
-                        "format": "PNG",
+                        "format": "JPG",
                         "width": 1200,
                         "height": 400,
                         "filesize": 9130
                     },
-                    "image": "https://andrey-company.ru/test/backend/sample_original.png"
+                    "image": "https://pbs.twimg.com/profile_images/645219915402715137/AGToACh7_400x400.jpg"
                 }
             },
             "settings": {
@@ -44,7 +44,7 @@
                             "payload": {
                                 "link": {
                                     "type": "url",
-                                    "payload": "https://andrey-company.ru/"
+                                    "payload": "https://google.com/"
                                 },
                                 "text": "Sample Button"
                             },

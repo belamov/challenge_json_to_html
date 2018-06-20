@@ -1,26 +1,11 @@
 <?php
 require 'vendor/autoload.php';
 
-use json2html\elements\ElementsFactory;
-
-function getElements($array)
-{
-    $elements = [];
-    foreach ($array as $item) {
-        $element = ElementsFactory::build($item->type, $item->payload, $item->settings);
-        if (isset($item->children)) {
-            $element->addChildren(getElements($item->children));
-        }
-        $elements[] = $element;
-    }
-    return $elements;
-}
+use json2html\JsonParser;
 
 $json = file_get_contents('data.json');
-
-$obj = json_decode($json);
-
-$elements = getElements([$obj]);
+$parser = new JsonParser();
+$elements = $parser->collectElementsFromJson($json);
 
 foreach ($elements as $element) {
     echo $element->render();
