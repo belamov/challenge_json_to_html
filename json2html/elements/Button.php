@@ -2,7 +2,6 @@
 
 namespace json2html\elements;
 
-
 class Button extends AbstractElement
 {
     private $text;

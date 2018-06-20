@@ -2,7 +2,6 @@
 
 namespace json2html\elements;
 
-
 abstract class AbstractElement
 {
     protected $children = [];
@@ -17,7 +16,14 @@ abstract class AbstractElement
 
     public function __construct($payload, $settings)
     {
-        $settingsToStyles = [
+        foreach ($settings as $key => $value) {
+            $this->styles .= $this->settingsToStyles($key, $value);
+        }
+    }
+
+    protected function settingsToStyles($key, $value)
+    {
+        $settingsToStylesRules = [
             "textAlign" => "text-align",
             "fontSize" => "font-size",
             "zoom" => "zoom",
@@ -25,13 +31,13 @@ abstract class AbstractElement
             "textColor" => "color",
             "backgroundColor" => "background-color",
         ];
-        foreach ($settings as $key => $value) {
-            if (!in_array($key, ['style'])) {
-                if (key_exists($key, $settingsToStyles)) {
-                    $this->styles .= "{$settingsToStyles[$key]}:{$value};";
-                } else {
-                    $this->styles .= "{$key}:{$value};";
-                }
+
+        //i've no idea what does "style" setting does, so i just ignore it
+        if (!in_array($key, ['style'])) {
+            if (key_exists($key, $settingsToStylesRules)) {
+                return "{$settingsToStylesRules[$key]}:{$value};";
+            } else {
+                return "{$key}:{$value};";
             }
         }
     }

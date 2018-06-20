@@ -2,13 +2,13 @@
 
 namespace json2html;
 
-
 use json2html\elements\ElementsFactory;
 
 class JsonParser
 {
     public function collectElementsFromDecodedJson($decodedJson)
     {
+        //it may be only one root widget
         if (!is_array($decodedJson)) {
             $decodedJson = [$decodedJson];
         }

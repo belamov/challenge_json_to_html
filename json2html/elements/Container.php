@@ -2,10 +2,8 @@
 
 namespace json2html\elements;
 
-
 class Container extends AbstractElement
 {
-
     public function render()
     {
         $html = "<div style=\"{$this->styles}\">";

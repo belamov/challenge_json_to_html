@@ -71,8 +71,8 @@ class JsonParserTest extends PHPUnit\Framework\TestCase
                     "backgroundColor": "#FF0000"
                 }
             }
-        ]
-';
+        ]';
+
         $parser = new JsonParser();
         $elements = $parser->collectElementsFromDecodedJson(json_decode($json));
 
@@ -107,6 +107,8 @@ class JsonParserTest extends PHPUnit\Framework\TestCase
 
         $parser = new JsonParser();
         $elements = $parser->collectElementsFromDecodedJson(json_decode($json));
+
+
         $this->assertSame(
             '<a class="widget-button" style="font-size:medium;color:#FFFFFF;background-color:#FF0000;" href="https://google.com/">Sample Button</a>',
             $elements[0]->render()
